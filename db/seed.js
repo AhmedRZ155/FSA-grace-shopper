@@ -19,7 +19,7 @@ async function dropTables() {
   }
 }
 
-async function buildTables() {
+async function createTables() {
   try {
     console.log('Starting to construct tables...');
 
@@ -67,7 +67,7 @@ async function rebuildDatabase() {
   try {
     await dropTables();
 
-    await buildTables();
+    await createTables();
   } catch (error) {
     console.log('Error during rebuildDB');
     throw error;
