@@ -1,12 +1,14 @@
 require('dotenv').config();
 const express = require('express');
 
-const { client, config } = require('./config/default');
+const client = require('./db');
 const logging = require('./lib/Logging');
 
 const apiRouter = require('./routes');
 
 const server = express();
+
+const SERVER_PORT = process.env.PORT || 1337;
 
 const StartServer = () => {
   server.use((req, res, next) => {
@@ -64,12 +66,13 @@ const StartServer = () => {
     });
   });
 
-  server.listen(config.server.port, () =>
-    logging.info(`Server is running on port ${config.server.port}`)
+  server.listen(SERVER_PORT, () =>
+    logging.info(`Server is running on port ${SERVER_PORT}`)
   );
 };
 
-db.connect()
+client
+  .connect()
   .then(() => {
     logging.info('Connected to Postgres');
     StartServer();
