@@ -1,5 +1,28 @@
 const { faker } = require('@faker-js/faker');
 
+const user_list = [
+  {
+    email: 'user1',
+    name: 'user1',
+    password: '123',
+  },
+  {
+    email: 'user2',
+    name: 'user2',
+    password: '123',
+  },
+  {
+    email: 'user3',
+    name: 'user3',
+    password: '123',
+  },
+  {
+    email: 'user4',
+    name: 'user4',
+    password: '123',
+  },
+];
+
 const product_list = [];
 
 const category_list = ['men', 'women', 'kids'];
@@ -17,4 +40,5 @@ for (let i = 1; i <= 20; i++) {
 
 module.exports = {
   product_list,
+  user_list,
 };

@@ -1,10 +1,11 @@
 const { faker } = require('@faker-js/faker');
 
 const client = require('./index');
-const { product_list } = require('./dummy_data');
+const { product_list, user_list } = require('./dummy_data');
 const { createImage } = require('./images');
 const { createProduct } = require('./products');
 const { createReview } = require('./reviews');
+const { createUser } = require('./users');
 
 async function dropTables() {
   try {
@@ -79,7 +80,7 @@ async function createTables() {
   }
 }
 
-async function createInitialProducts(user_list) {
+async function createInitialProducts(users) {
   const products = await Promise.all(
     product_list.map(product => createProduct(product))
   );
@@ -96,30 +97,32 @@ async function createInitialProducts(user_list) {
     products.map(product => createImage(product.id, faker.image.url()))
   );
 
-  // await Promise.all(
-  //   product_list.map(async product => {
-  //     const productId = product.id;
-  //     const userId = users[Math.round(Math.random() * 10)].id;
-  //     const content = faker.lorem.paragraph({ min: 1, max: 3 });
-  //     return await createReview({ content, productId, userId });
-  //   })
-  // );
+  await Promise.all(
+    product_list.map(async product => {
+      const productId = product.id;
+      const userId = users[Math.floor(Math.random() * users.length)].id;
+      const content = faker.lorem.paragraph({ min: 1, max: 3 });
+      return await createReview({ content, productId, userId });
+    })
+  );
 
-  // await Promise.all(
-  //   product_list.map(async product => {
-  //     const productId = product.id;
-  //     const userId = users[Math.round(Math.random() * 10)].id;
-  //     const content = faker.lorem.paragraph({ min: 1, max: 3 });
-  //     return await createReview({ content, productId, userId });
-  //   })
-  // );
+  await Promise.all(
+    product_list.map(async product => {
+      const productId = product.id;
+      const userId = users[Math.round(Math.random() * 10)].id;
+      const content = faker.lorem.paragraph({ min: 1, max: 3 });
+      return await createReview({ content, productId, userId });
+    })
+  );
 }
 
 async function initialData() {
   try {
     console.log('Starting adding data...');
 
-    await createInitialProducts([]);
+    const users = await Promise.all(user_list.map(user => createUser(user)));
+
+    await createInitialProducts(users);
 
     console.log('Finished adding data...');
   } catch (error) {
