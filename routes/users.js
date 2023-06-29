@@ -5,10 +5,12 @@ const { JWT_SECRET } = process.env;
 
 const {
     createUser,
-    getUserByUsername,
+    getUserByEmail,
     getUser,
     getUserById,
 } = require('../db');
+
+// check authentication middleware, get token, get user info. check token & whether user is admin or not
 
 // Check router working:
 usersRouter.use((req, res, next) => {
@@ -18,9 +20,9 @@ usersRouter.use((req, res, next) => {
 
 // POST /api/users/register
 usersRouter.post('/register', async (req, res, next) =>{
-    const { username, password } = req.body;
+    const { email, name, password } = req.body;
 
-    if (!username || !password) {
+    if (!email || !name || !password) {
         next({
             name: 'MissingCredentialsError',
             message: 'Need to supply both a username and password'
@@ -35,12 +37,12 @@ usersRouter.post('/register', async (req, res, next) =>{
     }
 
     try{
-        const isAlreadyUser = await getUserByUsername(username);
+        const isAlreadyUser = await getUserByEmail(email);
 
         if(isAlreadyUser){
             next({
                 name: 'UserAlreadyExistsError',
-                message: `User ${isAlreadyUser.username} is already taken.`,
+                message: `User ${isAlreadyUser.email} is already taken.`,
             });
         }
 
@@ -49,9 +51,15 @@ usersRouter.post('/register', async (req, res, next) =>{
         const token = jwt.sign({ id: user.id, username }, process.env.JWT_SECRET, {expiresIn: '1w'});
 
         res.send({
-            message: 'User Successfully Registered',
-            token,
-            user
+            success: true,
+            error: null,
+            message: 'Thanks for signing up for our service',
+            data: {
+                email,
+                name,
+                type: user.type,
+                token
+            }
         });
 
     }catch(error){
