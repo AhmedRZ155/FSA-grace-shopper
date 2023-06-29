@@ -79,7 +79,7 @@ async function createTables() {
   }
 }
 
-async function createInitialProducts(user_list) {
+async function createInitialProducts(users) {
   const products = await Promise.all(
     product_list.map(product => createProduct(product))
   );
@@ -118,6 +118,8 @@ async function createInitialProducts(user_list) {
 async function initialData() {
   try {
     console.log('Starting adding data...');
+
+    // const users = await Promise.all(user_list.map(user => createUser(user)));
 
     await createInitialProducts([]);
 
