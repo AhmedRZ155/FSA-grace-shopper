@@ -21,7 +21,7 @@ async function getReviewsByProductId(productId) {
   try {
     const { rows } = await client.query(
       `
-        SELECT review.id, review.content, review."userId", users.name 
+        SELECT reviews.id, reviews.content, reviews."userId", users.name 
         FROM reviews
         JOIN users ON users.id=reviews."userId"
         WHERE "productId"=$1;
