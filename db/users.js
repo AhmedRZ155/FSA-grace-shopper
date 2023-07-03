@@ -2,19 +2,24 @@ const client = require('./index');
 const bcrypt = require('bcrypt');
 
 // User Functions:
-    // createUser | getUser | getUserById | getUserByUsername
-    
-async function createUser({ email, name , password }) {
+// createUser | getUser | getUserById | getUserByUsername
+
+async function createUser({ email, name, password }) {
   try {
     const SALT_COUNT = 10;
     const hashedPassword = await bcrypt.hash(password, SALT_COUNT);
 
-    const { rows: [user] } = await client.query(`
+    const {
+      rows: [user],
+    } = await client.query(
+      `
       INSERT INTO users (email, name, password)
       VALUES ($1, $2, $3)
       ON CONFLICT (email) DO NOTHING
       RETURNING *;
-    `, [email, name, hashedPassword]);
+    `,
+      [email, name, hashedPassword]
+    );
 
     if (user) {
       delete user.password;
@@ -27,10 +32,15 @@ async function createUser({ email, name , password }) {
 
 async function getUser({ email, password }) {
   try {
-    const { rows: [user] } = await client.query(`
+    const {
+      rows: [user],
+    } = await client.query(
+      `
       SELECT * FROM users
       WHERE email = $1;
-    `, [email]);
+    `,
+      [email]
+    );
 
     const passwordCheck = await bcrypt.compare(password, user.password);
 
@@ -45,10 +55,15 @@ async function getUser({ email, password }) {
 
 async function getUserById(userId) {
   try {
-    const { rows: [user] } = await client.query(`
+    const {
+      rows: [user],
+    } = await client.query(
+      `
       SELECT * FROM users
       WHERE id = $1;
-    `, [userId]);
+    `,
+      [userId]
+    );
 
     delete user.password;
     return user;
@@ -59,13 +74,20 @@ async function getUserById(userId) {
 
 async function getUserByEmail(email) {
   try {
-    const { rows: [user] } = await client.query(`
+    const {
+      rows: [user],
+    } = await client.query(
+      `
       SELECT * FROM users
       WHERE email = $1;
-    `, [email]);
+    `,
+      [email]
+    );
 
     if (user) {
       return user;
+    } else {
+      return null;
     }
   } catch (error) {
     console.log(error);
@@ -77,4 +99,4 @@ module.exports = {
   getUser,
   getUserById,
   getUserByEmail,
-}
+};

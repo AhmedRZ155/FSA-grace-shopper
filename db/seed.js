@@ -46,7 +46,7 @@ async function createTables() {
         name VARCHAR(255) UNIQUE NOT NULL,
         description TEXT  NOT NULL,
         price MONEY NOT NULL,
-        type VARCHAR(255) DEFAULT 'new' NOT NULL,
+        type VARCHAR(255) NOT NULL,
         category VARCHAR(255) NOT NULL,
         quantity INTEGER DEFAULT 0
       );
