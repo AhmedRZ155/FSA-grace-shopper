@@ -1,6 +1,7 @@
 const express = require("express");
 const usersRouter = express.Router();
 const jwt = require('jsonwebtoken');
+const auth = require ('./auth.js');
 const { JWT_SECRET } = process.env;
 
 const {
@@ -9,8 +10,6 @@ const {
     getUser,
     getUserById,
 } = require('../db');
-
-// check authentication middleware, get token, get user info. check token & whether user is admin or not
 
 // Check router working:
 usersRouter.use((req, res, next) => {
@@ -89,7 +88,7 @@ usersRouter.post('/login', async (req, res, next) => {
 });
 
 // GET /api/users/me
-usersRouter.get('/me', async (req, res, next) => {
+usersRouter.get('/me', auth, async (req, res, next) => {
     try {
         if (req.user) {
             const user = await getUserById(req.user.id);
