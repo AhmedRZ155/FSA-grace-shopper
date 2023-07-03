@@ -61,23 +61,23 @@ const registerUser = async () => {
 
 Success:
 
-```javascript
+```json
 {
   "success": true,
   "error": null,
   "message": "Thanks for signing up for our service",
   "data": {
-  "email": "superman27",
-  "name": "batman87",
-  "type": "user",
-  "token": "xyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZTg5MDY2ZGQ0MzkxNjAwTc1NTNlMDUiLCJ1c2VybmFtZSI6Im1hdHQiLCJpYXQiOjE1ODYwMzgzODF9.CTj4owBl0PB-G6G4E_1l6DS6_cVc0iKcMzBIWFUYM1p",
+    "email": "superman27",
+    "name": "batman87",
+    "type": "user",
+    "token": "xyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZTg5MDY2ZGQ0MzkxNjAwTc1NTNlMDUiLCJ1c2VybmFtZSI6Im1hdHQiLCJpYXQiOjE1ODYwMzgzODF9.CTj4owBl0PB-G6G4E_1l6DS6_cVc0iKcMzBIWFUYM1p"
   }
 }
 ```
 
 Fail:
 
-```javascript
+```json
 {
   "success": false,
   "error": "ErrorName",
@@ -121,23 +121,23 @@ const userLogin = async () => {
 
 Success:
 
-```javascript
+```json
 {
   "success": true,
   "error": null,
   "message": "You're logged in!",
   "data": {
-  "email": "superman27",
-  "name": "batman87",
-  "type": "user",
-  "token": "xyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZTg5MDY2ZGQ0MzkxNjAwTc1NTNlMDUiLCJ1c2VybmFtZSI6Im1hdHQiLCJpYXQiOjE1ODYwMzgzODF9.CTj4owBl0PB-G6G4E_1l6DS6_cVc0iKcMzBIWFUYM1p",
+    "email": "superman27",
+    "name": "batman87",
+    "type": "user",
+    "token": "xyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZTg5MDY2ZGQ0MzkxNjAwTc1NTNlMDUiLCJ1c2VybmFtZSI6Im1hdHQiLCJpYXQiOjE1ODYwMzgzODF9.CTj4owBl0PB-G6G4E_1l6DS6_cVc0iKcMzBIWFUYM1p"
   }
 }
 ```
 
 Fail:
 
-```javascript
+```json
 {
   "success": false,
   "error": "ErrorName",
@@ -176,22 +176,22 @@ const userData = async () => {
 
 Success:
 
-```javascript
+```json
 {
   "success": true,
   "error": null,
   "message": "Success fetch user data",
   "data": {
-  "email": "superman27",
-  "name": "batman87",
-  "type": "user"
+    "email": "superman27",
+    "name": "batman87",
+    "type": "user"
   }
 }
 ```
 
 Fail:
 
-```javascript
+```json
 {
   "success": false,
   "error": "ErrorName",
@@ -221,53 +221,53 @@ const getProducts = async () => {
 
 Success:
 
-```javascript
+```json
 {
   "success": true,
   "error": null,
   "message": "Success fetch products data",
   "data": [
+    {
+      "id": 1,
+      "name": "Intelligent Wooden Bike",
+      "description": "The automobile layout consists of a front-engine design, with transaxle-type transmissions mounted at the rear of the engine and four wheel drive",
+      "price": "$705.00",
+      "type": "new",
+      "category": "women",
+      "quantity": 7,
+      "images": [
         {
-            "id": 1,
-            "name": "Intelligent Wooden Bike",
-            "description": "The automobile layout consists of a front-engine design, with transaxle-type transmissions mounted at the rear of the engine and four wheel drive",
-            "price": "$705.00",
-            "type": "new",
-            "category": "women",
-            "quantity": 7,
-            "images": [
-                {
-                    "url": "https://loremflickr.com/640/480?lock=2953460450328576"
-                },
-                {
-                    "url": "https://picsum.photos/seed/XVilJI/640/480"
-                },
-            ]
+          "url": "https://loremflickr.com/640/480?lock=2953460450328576"
         },
         {
-            "id": 2,
-            "name": "Awesome Concrete Keyboard",
-            "description": "The slim & simple Maple Gaming Keyboard from Dev Byte comes with a sleek body and 7- Color RGB LED Back-lighting for smart functionality",
-            "price": "$425.00",
-            "type": "new",
-            "category": "women",
-            "quantity": 7,
-            "images": [
-                {
-                    "url": "https://loremflickr.com/640/480?lock=2730744640176128"
-                },
-                {
-                    "url": "https://picsum.photos/seed/kYzth1Lxo/640/480"
-                },
-            ]
+          "url": "https://picsum.photos/seed/XVilJI/640/480"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Awesome Concrete Keyboard",
+      "description": "The slim & simple Maple Gaming Keyboard from Dev Byte comes with a sleek body and 7- Color RGB LED Back-lighting for smart functionality",
+      "price": "$425.00",
+      "type": "new",
+      "category": "women",
+      "quantity": 7,
+      "images": [
+        {
+          "url": "https://loremflickr.com/640/480?lock=2730744640176128"
         },
-    ]
+        {
+          "url": "https://picsum.photos/seed/kYzth1Lxo/640/480"
+        }
+      ]
+    }
+  ]
 }
 ```
 
 Fail:
 
-```javascript
+```json
 {
   "success": false,
   "error": "ErrorName",
@@ -323,32 +323,31 @@ const createProduct = async () => {
 
 Success:
 
-```javascript
+```json
 {
   "success": true,
   "error": null,
   "message": "Success create new product",
-  "data":
-        {
-            "id": 1,
-            "name": "Intelligent Wooden Bike",
-            "description": "The automobile layout consists of a front-engine design, with transaxle-type transmissions mounted at the rear of the engine and four wheel drive",
-            "price": "$705.00",
-            "type": "new",
-            "category": "women",
-            "quantity": 7,
-            "images": [
-                {
-                    "url": "https://loremflickr.com/640/480?lock=2953460450328576"
-                },
-            ]
-        },
+  "data": {
+    "id": 1,
+    "name": "Intelligent Wooden Bike",
+    "description": "The automobile layout consists of a front-engine design, with transaxle-type transmissions mounted at the rear of the engine and four wheel drive",
+    "price": "$705.00",
+    "type": "new",
+    "category": "women",
+    "quantity": 7,
+    "images": [
+      {
+        "url": "https://loremflickr.com/640/480?lock=2953460450328576"
+      }
+    ]
+  }
 }
 ```
 
 Fail:
 
-```javascript
+```json
 {
   "success": false,
   "error": "ErrorName",
@@ -404,32 +403,31 @@ const updateProduct = async () => {
 
 Success:
 
-```javascript
+```json
 {
   "success": true,
   "error": null,
   "message": "Success update product data",
-  "data":
-        {
-            "id": 1,
-            "name": "Intelligent Wooden Bike",
-            "description": "The automobile layout consists of a front-engine design, with transaxle-type transmissions mounted at the rear of the engine and four wheel drive",
-            "price": "$705.00",
-            "type": "new",
-            "category": "women",
-            "quantity": 7,
-            "images": [
-                {
-                    "url": "https://loremflickr.com/640/480?lock=2953460450328576"
-                },
-            ]
-        },
+  "data": {
+    "id": 1,
+    "name": "Intelligent Wooden Bike",
+    "description": "The automobile layout consists of a front-engine design, with transaxle-type transmissions mounted at the rear of the engine and four wheel drive",
+    "price": "$705.00",
+    "type": "new",
+    "category": "women",
+    "quantity": 7,
+    "images": [
+      {
+        "url": "https://loremflickr.com/640/480?lock=2953460450328576"
+      }
+    ]
+  }
 }
 ```
 
 Fail:
 
-```javascript
+```json
 {
   "success": false,
   "error": "ErrorName",
@@ -466,27 +464,26 @@ const deleteProduct = async () => {
 
 Success:
 
-```javascript
+```json
 {
   "success": true,
   "error": null,
   "message": "Success delete product",
-  "data":
-        {
-            "id": 1,
-            "name": "Intelligent Wooden Bike",
-            "description": "The automobile layout consists of a front-engine design, with transaxle-type transmissions mounted at the rear of the engine and four wheel drive",
-            "price": "$705.00",
-            "type": "new",
-            "category": "women",
-            "quantity": 7,
-        },
+  "data": {
+    "id": 1,
+    "name": "Intelligent Wooden Bike",
+    "description": "The automobile layout consists of a front-engine design, with transaxle-type transmissions mounted at the rear of the engine and four wheel drive",
+    "price": "$705.00",
+    "type": "new",
+    "category": "women",
+    "quantity": 7
+  }
 }
 ```
 
 Fail:
 
-```javascript
+```json
 {
   "success": false,
   "error": "ErrorName",
