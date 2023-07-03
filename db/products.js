@@ -5,16 +5,23 @@ const {
   deleteReviewsByProductId,
 } = require('./reviews');
 
-async function createProduct({ name, description, price, category, quantity }) {
+async function createProduct({
+  name,
+  description,
+  price,
+  type,
+  category,
+  quantity,
+}) {
   try {
     const { rows } = await client.query(
       `
-        INSERT INTO products (name, description, price, category, quantity)
-        VALUES ($1, $2, $3, $4, $5)
+        INSERT INTO products (name, description, price, type, category, quantity)
+        VALUES ($1, $2, $3, $4, $5, $6)
         ON CONFLICT (name) DO NOTHING
         RETURNING *;
       `,
-      [name, description, price, category, quantity]
+      [name, description, price, type, category, quantity]
     );
 
     return rows[0];

@@ -46,7 +46,7 @@ async function createTables() {
         name VARCHAR(255) UNIQUE NOT NULL,
         description TEXT  NOT NULL,
         price MONEY NOT NULL,
-        type VARCHAR(255) DEFAULT 'new' NOT NULL,
+        type VARCHAR(255) NOT NULL,
         category VARCHAR(255) NOT NULL,
         quantity INTEGER DEFAULT 0
       );
@@ -98,7 +98,7 @@ async function createInitialProducts(users) {
   );
 
   await Promise.all(
-    product_list.map(async product => {
+    products.map(async product => {
       const productId = product.id;
       const userId = users[Math.floor(Math.random() * users.length)].id;
       const content = faker.lorem.paragraph({ min: 1, max: 3 });
@@ -107,9 +107,9 @@ async function createInitialProducts(users) {
   );
 
   await Promise.all(
-    product_list.map(async product => {
+    products.map(async product => {
       const productId = product.id;
-      const userId = users[Math.round(Math.random() * 10)].id;
+      const userId = users[Math.floor(Math.random() * users.length)].id;
       const content = faker.lorem.paragraph({ min: 1, max: 3 });
       return await createReview({ content, productId, userId });
     })
