@@ -98,7 +98,7 @@ async function createInitialProducts(users) {
   );
 
   await Promise.all(
-    product_list.map(async product => {
+    products.map(async product => {
       const productId = product.id;
       const userId = users[Math.floor(Math.random() * users.length)].id;
       const content = faker.lorem.paragraph({ min: 1, max: 3 });
@@ -107,9 +107,9 @@ async function createInitialProducts(users) {
   );
 
   await Promise.all(
-    product_list.map(async product => {
+    products.map(async product => {
       const productId = product.id;
-      const userId = users[Math.round(Math.random() * 10)].id;
+      const userId = users[Math.floor(Math.random() * users.length)].id;
       const content = faker.lorem.paragraph({ min: 1, max: 3 });
       return await createReview({ content, productId, userId });
     })
