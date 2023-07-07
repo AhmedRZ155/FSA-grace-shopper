@@ -52,12 +52,11 @@ usersRouter.post('/register', async (req, res, next) => {
       error: null,
       message: 'Thanks for signing up for our service',
       data: {
-        id,
+        id: user.id,
         email,
         name,
         type: user.type,
         token,
-        cart,
       },
     });
   } catch (error) {
@@ -72,6 +71,8 @@ usersRouter.post('/login', async (req, res, next) => {
   try {
     const user = await getUser({ email, password });
 
+    const cart = await getCartByUserId(id);
+
     const token = jwt.sign({ id: user.id, email }, JWT_SECRET, {
       // expiresIn: '1w',
     });
@@ -82,7 +83,7 @@ usersRouter.post('/login', async (req, res, next) => {
         error: null,
         message: "You're logged in!",
         data: {
-          id,
+          id: user.id,
           email,
           name: user.name,
           type: user.type,
@@ -102,7 +103,7 @@ usersRouter.get('/me', auth, async (req, res, next) => {
     if (req.user) {
       const { id, email, name, type } = req.user;
 
-      const cart = getCartByUserId(id);
+      const cart = await getCartByUserId(id);
 
       res.send({
         success: true,
