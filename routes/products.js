@@ -1,7 +1,13 @@
 const express = require('express');
 const router = express.Router();
 
-const { getProducts, createProduct } = require('../db/products');
+const auth = require('./auth.js');
+const {
+  getProducts,
+  createProduct,
+  updateProduct,
+  deleteProduct,
+} = require('../db/products');
 const { createImage, updateImagesByProductID } = require('../db/images');
 
 router.get('/', async (req, res, next) => {
@@ -19,14 +25,23 @@ router.get('/', async (req, res, next) => {
   }
 });
 
-router.post('/', async (req, res, next) => {
+router.post('/', auth, async (req, res, next) => {
+  if (req.user?.type !== 'admin') {
+    return next({
+      name: 'AuthorizationHeaderError',
+      message: 'You must be an admin to perform this action',
+    });
+  }
+
   try {
-    const { name, description, price, category, quantity, urls } = req.body;
+    const { name, description, price, type, category, quantity, urls } =
+      req.body;
 
     const product = await createProduct({
       name,
       description,
       price,
+      type,
       category,
       quantity,
     });
@@ -51,15 +66,24 @@ router.post('/', async (req, res, next) => {
   }
 });
 
-router.patch('/:productId', async (req, res, next) => {
+router.patch('/:productId', auth, async (req, res, next) => {
+  if (req.user.type !== 'admin') {
+    return next({
+      name: 'AuthorizationHeaderError',
+      message: 'You must be an admin to perform this action',
+    });
+  }
+
   try {
     const { productId } = req.params;
-    const { name, description, price, category, quantity, urls } = req.body;
+    const { name, description, price, type, category, quantity, urls } =
+      req.body;
     const product = await updateProduct({
       productId,
       name,
       description,
       price,
+      type,
       category,
       quantity,
     });
@@ -77,7 +101,14 @@ router.patch('/:productId', async (req, res, next) => {
   }
 });
 
-router.delete('/:productId', async (req, res, next) => {
+router.delete('/:productId', auth, async (req, res, next) => {
+  if (req.user.type !== 'admin') {
+    return next({
+      name: 'AuthorizationHeaderError',
+      message: 'You must be an admin to perform this action',
+    });
+  }
+
   try {
     const { productId } = req.params;
     const _product = await deleteProduct(productId);

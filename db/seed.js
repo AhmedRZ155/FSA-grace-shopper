@@ -5,7 +5,8 @@ const { product_list, user_list } = require('./dummy_data');
 const { createImage } = require('./images');
 const { createProduct } = require('./products');
 const { createReview } = require('./reviews');
-const { createUser } = require('./users');
+const { createUser, updateUser } = require('./users');
+const { addProductToCart } = require('./carts');
 
 async function dropTables() {
   try {
@@ -53,7 +54,7 @@ async function createTables() {
 
       CREATE TABLE images(
         id SERIAL PRIMARY KEY,
-        url text UNIQUE NOT NULL,
+        url text NOT NULL,
         "productId" INTEGER REFERENCES products(id)
       );
 
@@ -80,49 +81,83 @@ async function createTables() {
   }
 }
 
-async function createInitialProducts(users) {
-  const products = await Promise.all(
-    product_list.map(product => createProduct(product))
-  );
-
-  await Promise.all(
-    products.map(product => createImage(product.id, faker.image.url()))
-  );
-
-  await Promise.all(
-    products.map(product => createImage(product.id, faker.image.url()))
-  );
-
-  await Promise.all(
-    products.map(product => createImage(product.id, faker.image.url()))
-  );
-
-  await Promise.all(
-    products.map(async product => {
-      const productId = product.id;
-      const userId = users[Math.floor(Math.random() * users.length)].id;
-      const content = faker.lorem.paragraph({ min: 1, max: 3 });
-      return await createReview({ content, productId, userId });
-    })
-  );
-
-  await Promise.all(
-    products.map(async product => {
-      const productId = product.id;
-      const userId = users[Math.floor(Math.random() * users.length)].id;
-      const content = faker.lorem.paragraph({ min: 1, max: 3 });
-      return await createReview({ content, productId, userId });
-    })
-  );
-}
-
 async function initialData() {
   try {
     console.log('Starting adding data...');
 
     const users = await Promise.all(user_list.map(user => createUser(user)));
 
-    await createInitialProducts(users);
+    const products = await Promise.all(
+      product_list.map(product => createProduct(product))
+    );
+
+    await Promise.all(
+      products.map(product => createImage(product.id, faker.image.url()))
+    );
+
+    await Promise.all(
+      products.map(product => createImage(product.id, faker.image.url()))
+    );
+
+    await Promise.all(
+      products.map(product => createImage(product.id, faker.image.url()))
+    );
+
+    await Promise.all(
+      products.map(async product => {
+        const productId = product.id;
+        const userId = users[Math.floor(Math.random() * users.length)].id;
+        const content = faker.lorem.paragraph({ min: 1, max: 3 });
+        return await createReview({ content, productId, userId });
+      })
+    );
+
+    await Promise.all(
+      products.map(async product => {
+        const productId = product.id;
+        const userId = users[Math.floor(Math.random() * users.length)].id;
+        const content = faker.lorem.paragraph({ min: 1, max: 3 });
+        return await createReview({ content, productId, userId });
+      })
+    );
+
+    await Promise.all(
+      users.map(async user => {
+        const userId = user.id;
+        const productId =
+          products[Math.floor(Math.random() * products.length)].id;
+        const quantity = Math.round(Math.random() * 3);
+        return await addProductToCart({ userId, productId, quantity });
+      })
+    );
+
+    await Promise.all(
+      users.map(async user => {
+        const userId = user.id;
+        const productId =
+          products[Math.floor(Math.random() * products.length)].id;
+        const quantity = Math.round(Math.random() * 3);
+        return await addProductToCart({ userId, productId, quantity });
+      })
+    );
+
+    await Promise.all(
+      users.map(async user => {
+        const userId = user.id;
+        const productId =
+          products[Math.floor(Math.random() * products.length)].id;
+        const quantity = Math.round(Math.random() * 3);
+        return await addProductToCart({ userId, productId, quantity });
+      })
+    );
+
+    const adminUser = await createUser({
+      email: 'admin',
+      name: 'Admin',
+      password: '123',
+    });
+
+    await updateUser({ id: adminUser.id, type: 'admin' });
 
     console.log('Finished adding data...');
   } catch (error) {
