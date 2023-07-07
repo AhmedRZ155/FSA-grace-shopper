@@ -2,23 +2,23 @@ const { faker } = require('@faker-js/faker');
 
 const user_list = [
   {
-    email: 'user1',
-    name: 'user1',
+    email: 'brian',
+    name: 'brian',
     password: '123',
   },
   {
-    email: 'user2',
-    name: 'user2',
+    email: 'bryson',
+    name: 'bryson',
     password: '123',
   },
   {
-    email: 'user3',
-    name: 'user3',
+    email: 'ahmed',
+    name: 'ahmed',
     password: '123',
   },
   {
-    email: 'user4',
-    name: 'user4',
+    email: 'bo',
+    name: 'bo',
     password: '123',
   },
 ];
