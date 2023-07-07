@@ -45,28 +45,28 @@ router.post('/', auth, async (req, res, next) => {
   }
 });
 
-router.get('/me', auth, async (req, res, next) => {
-  if (!req.user) {
-    return next({
-      name: 'AuthorizationHeaderError',
-      message: 'You must be logged in to perform this action',
-    });
-  }
+// router.get('/me', auth, async (req, res, next) => {
+//   if (!req.user) {
+//     return next({
+//       name: 'AuthorizationHeaderError',
+//       message: 'You must be logged in to perform this action',
+//     });
+//   }
 
-  try {
-    const userId = req.user.id;
-    const cart = await getCartByUserId(userId);
+//   try {
+//     const userId = req.user.id;
+//     const cart = await getCartByUserId(userId);
 
-    res.status(200).json({
-      success: true,
-      message: `Success fetch user cart`,
-      error: null,
-      data: cart,
-    });
-  } catch (error) {
-    next(error);
-  }
-});
+//     res.status(200).json({
+//       success: true,
+//       message: `Success fetch user cart`,
+//       error: null,
+//       data: cart,
+//     });
+//   } catch (error) {
+//     next(error);
+//   }
+// });
 
 router.patch('/', auth, async (req, res, next) => {
   if (!req.user) {

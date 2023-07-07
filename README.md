@@ -70,7 +70,43 @@ Success:
     "email": "superman27",
     "name": "batman87",
     "type": "user",
-    "token": "xyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZTg5MDY2ZGQ0MzkxNjAwTc1NTNlMDUiLCJ1c2VybmFtZSI6Im1hdHQiLCJpYXQiOjE1ODYwMzgzODF9.CTj4owBl0PB-G6G4E_1l6DS6_cVc0iKcMzBIWFUYM1p"
+    "token": "xyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZTg5MDY2ZGQ0MzkxNjAwTc1NTNlMDUiLCJ1c2VybmFtZSI6Im1hdHQiLCJpYXQiOjE1ODYwMzgzODF9.CTj4owBl0PB-G6G4E_1l6DS6_cVc0iKcMzBIWFUYM1p",
+    "cart": [
+      {
+        "id": 29,
+        "quantity": 1,
+        "name": "Fantastic Metal Ball",
+        "description": "New range of formal shirts are designed keeping you in mind. With fits and styling that will make you stand apart",
+        "price": "$942.00",
+        "type": "new",
+        "category": "women",
+        "images": [
+          {
+            "url": "https://loremflickr.com/640/480?lock=4670883673145344"
+          },
+          {
+            "url": "https://loremflickr.com/640/480?lock=3072621446955008"
+          },
+          {
+            "url": "https://loremflickr.com/640/480?lock=1540349547773952"
+          }
+        ],
+        "reviews": [
+          {
+            "id": 29,
+            "content": "A perspiciatis laboriosam voluptas fuga voluptatum hic consectetur similique.",
+            "userId": 3,
+            "name": "ahmed"
+          },
+          {
+            "id": 69,
+            "content": "Sint nam dolore ipsa alias eos accusamus velit praesentium. Tempore quisquam sunt aliquam voluptatibus voluptas pariatur omnis eaque sint.",
+            "userId": 4,
+            "name": "brian"
+          }
+        ]
+      }
+    ]
   }
 }
 ```
@@ -130,7 +166,43 @@ Success:
     "email": "superman27",
     "name": "batman87",
     "type": "user",
-    "token": "xyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZTg5MDY2ZGQ0MzkxNjAwTc1NTNlMDUiLCJ1c2VybmFtZSI6Im1hdHQiLCJpYXQiOjE1ODYwMzgzODF9.CTj4owBl0PB-G6G4E_1l6DS6_cVc0iKcMzBIWFUYM1p"
+    "token": "xyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZTg5MDY2ZGQ0MzkxNjAwTc1NTNlMDUiLCJ1c2VybmFtZSI6Im1hdHQiLCJpYXQiOjE1ODYwMzgzODF9.CTj4owBl0PB-G6G4E_1l6DS6_cVc0iKcMzBIWFUYM1p",
+    "cart": [
+      {
+        "id": 29,
+        "quantity": 1,
+        "name": "Fantastic Metal Ball",
+        "description": "New range of formal shirts are designed keeping you in mind. With fits and styling that will make you stand apart",
+        "price": "$942.00",
+        "type": "new",
+        "category": "women",
+        "images": [
+          {
+            "url": "https://loremflickr.com/640/480?lock=4670883673145344"
+          },
+          {
+            "url": "https://loremflickr.com/640/480?lock=3072621446955008"
+          },
+          {
+            "url": "https://loremflickr.com/640/480?lock=1540349547773952"
+          }
+        ],
+        "reviews": [
+          {
+            "id": 29,
+            "content": "A perspiciatis laboriosam voluptas fuga voluptatum hic consectetur similique.",
+            "userId": 3,
+            "name": "ahmed"
+          },
+          {
+            "id": 69,
+            "content": "Sint nam dolore ipsa alias eos accusamus velit praesentium. Tempore quisquam sunt aliquam voluptatibus voluptas pariatur omnis eaque sint.",
+            "userId": 4,
+            "name": "brian"
+          }
+        ]
+      }
+    ]
   }
 }
 ```
@@ -184,7 +256,43 @@ Success:
   "data": {
     "email": "superman27",
     "name": "batman87",
-    "type": "user"
+    "type": "user",
+    "cart": [
+      {
+        "id": 29,
+        "quantity": 1,
+        "name": "Fantastic Metal Ball",
+        "description": "New range of formal shirts are designed keeping you in mind. With fits and styling that will make you stand apart",
+        "price": "$942.00",
+        "type": "new",
+        "category": "women",
+        "images": [
+          {
+            "url": "https://loremflickr.com/640/480?lock=4670883673145344"
+          },
+          {
+            "url": "https://loremflickr.com/640/480?lock=3072621446955008"
+          },
+          {
+            "url": "https://loremflickr.com/640/480?lock=1540349547773952"
+          }
+        ],
+        "reviews": [
+          {
+            "id": 29,
+            "content": "A perspiciatis laboriosam voluptas fuga voluptatum hic consectetur similique.",
+            "userId": 3,
+            "name": "ahmed"
+          },
+          {
+            "id": 69,
+            "content": "Sint nam dolore ipsa alias eos accusamus velit praesentium. Tempore quisquam sunt aliquam voluptatibus voluptas pariatur omnis eaque sint.",
+            "userId": 4,
+            "name": "brian"
+          }
+        ]
+      }
+    ]
   }
 }
 ```
@@ -478,6 +586,248 @@ Success:
     "category": "women",
     "quantity": 7
   }
+}
+```
+
+Fail:
+
+```json
+{
+  "success": false,
+  "error": "ErrorName",
+  "message": "Something when wrong",
+  "data": null
+}
+```
+
+`POST /carts`
+
+Headers:
+
+- token (string, required)
+
+Body:
+
+- productId (number, required)
+- quantity (number, required)
+
+```javascript
+const addProductToCart = async () => {
+  try {
+    const response = await fetch(`${BASE_URL}/api/carts`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${TOKEN_STRING_HERE}`,
+      },
+      body: JSON.stringify({
+        productId: 29,
+        quantity: 1,
+      }),
+    });
+    const result = await response.json();
+    console.log(result);
+    return result;
+  } catch (err) {
+    console.error(err);
+  }
+};
+```
+
+##### Return Data
+
+Success:
+
+```json
+{
+  "success": true,
+  "error": null,
+  "message": "Success add new product in cart",
+  "data": [
+    {
+      "id": 29,
+      "quantity": 1,
+      "name": "Fantastic Metal Ball",
+      "description": "New range of formal shirts are designed keeping you in mind. With fits and styling that will make you stand apart",
+      "price": "$942.00",
+      "type": "new",
+      "category": "women",
+      "images": [
+        {
+          "url": "https://loremflickr.com/640/480?lock=4670883673145344"
+        },
+        {
+          "url": "https://loremflickr.com/640/480?lock=3072621446955008"
+        },
+        {
+          "url": "https://loremflickr.com/640/480?lock=1540349547773952"
+        }
+      ],
+      "reviews": [
+        {
+          "id": 29,
+          "content": "A perspiciatis laboriosam voluptas fuga voluptatum hic consectetur similique.",
+          "userId": 3,
+          "name": "ahmed"
+        },
+        {
+          "id": 69,
+          "content": "Sint nam dolore ipsa alias eos accusamus velit praesentium. Tempore quisquam sunt aliquam voluptatibus voluptas pariatur omnis eaque sint.",
+          "userId": 4,
+          "name": "brian"
+        }
+      ]
+    }
+  ]
+}
+```
+
+Fail:
+
+```json
+{
+  "success": false,
+  "error": "ErrorName",
+  "message": "Something when wrong",
+  "data": null
+}
+```
+
+`PATCH /carts`
+
+Headers:
+
+- token (string, required)
+
+Body:
+
+- productId (number, required)
+- quantity (number, required)
+
+```javascript
+const updateProductInCart = async () => {
+  try {
+    const response = await fetch(`${BASE_URL}/api/carts`, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${TOKEN_STRING_HERE}`,
+      },
+      body: JSON.stringify({
+        productId: 29,
+        quantity: 2,
+      }),
+    });
+    const result = await response.json();
+    console.log(result);
+    return result;
+  } catch (err) {
+    console.error(err);
+  }
+};
+```
+
+##### Return Data
+
+Success:
+
+```json
+{
+  "success": true,
+  "error": null,
+  "message": "Success add new product in cart",
+  "data": [
+    {
+      "id": 29,
+      "quantity": 2,
+      "name": "Fantastic Metal Ball",
+      "description": "New range of formal shirts are designed keeping you in mind. With fits and styling that will make you stand apart",
+      "price": "$942.00",
+      "type": "new",
+      "category": "women",
+      "images": [
+        {
+          "url": "https://loremflickr.com/640/480?lock=4670883673145344"
+        },
+        {
+          "url": "https://loremflickr.com/640/480?lock=3072621446955008"
+        },
+        {
+          "url": "https://loremflickr.com/640/480?lock=1540349547773952"
+        }
+      ],
+      "reviews": [
+        {
+          "id": 29,
+          "content": "A perspiciatis laboriosam voluptas fuga voluptatum hic consectetur similique.",
+          "userId": 3,
+          "name": "ahmed"
+        },
+        {
+          "id": 69,
+          "content": "Sint nam dolore ipsa alias eos accusamus velit praesentium. Tempore quisquam sunt aliquam voluptatibus voluptas pariatur omnis eaque sint.",
+          "userId": 4,
+          "name": "brian"
+        }
+      ]
+    }
+  ]
+}
+```
+
+Fail:
+
+```json
+{
+  "success": false,
+  "error": "ErrorName",
+  "message": "Something when wrong",
+  "data": null
+}
+```
+
+`DELETE /carts`
+
+Headers:
+
+- token (string, required)
+
+Body:
+
+- productId (number, required)
+
+```javascript
+const removeProductFromCart = async () => {
+  try {
+    const response = await fetch(`${BASE_URL}/api/carts`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${TOKEN_STRING_HERE}`,
+      },
+      body: JSON.stringify({
+        productId: 29,
+      }),
+    });
+    const result = await response.json();
+    console.log(result);
+    return result;
+  } catch (err) {
+    console.error(err);
+  }
+};
+```
+
+##### Return Data
+
+Success:
+
+```json
+{
+  "success": true,
+  "error": null,
+  "message": "Success add new product in cart",
+  "data": []
 }
 ```
 
