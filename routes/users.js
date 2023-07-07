@@ -5,6 +5,7 @@ const auth = require('./auth.js');
 const { JWT_SECRET } = process.env;
 
 const { createUser, getUserByEmail, getUser } = require('../db/users');
+const { getCartByUserId } = require('../db/carts.js');
 
 // Check router working:
 usersRouter.use((req, res, next) => {
@@ -51,10 +52,12 @@ usersRouter.post('/register', async (req, res, next) => {
       error: null,
       message: 'Thanks for signing up for our service',
       data: {
+        id,
         email,
         name,
         type: user.type,
         token,
+        cart,
       },
     });
   } catch (error) {
@@ -79,10 +82,12 @@ usersRouter.post('/login', async (req, res, next) => {
         error: null,
         message: "You're logged in!",
         data: {
+          id,
           email,
           name: user.name,
           type: user.type,
           token,
+          cart,
         },
       });
     }
@@ -97,6 +102,8 @@ usersRouter.get('/me', auth, async (req, res, next) => {
     if (req.user) {
       const { id, email, name, type } = req.user;
 
+      const cart = getCartByUserId(id);
+
       res.send({
         success: true,
         message: `Success fetch user information`,
@@ -106,6 +113,7 @@ usersRouter.get('/me', auth, async (req, res, next) => {
           email,
           name,
           type,
+          cart,
         },
       });
     } else {
