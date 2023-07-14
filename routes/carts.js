@@ -7,6 +7,7 @@ const {
   addProductToCart,
   getCartByUserId,
   removeProductInCart,
+  clearCartByUserId,
 } = require('../db/carts.js');
 
 router.post('/', auth, async (req, res, next) => {
@@ -118,6 +119,28 @@ router.delete('/', auth, async (req, res, next) => {
     res.status(200).json({
       success: true,
       message: `Success remove product from cart`,
+      error: null,
+      data: cart,
+    });
+  } catch (error) {
+    next(error);
+  }
+});
+
+router.delete('/me', auth, async (req, res, next) => {
+  if (!req.user) {
+    return next({
+      name: 'AuthorizationHeaderError',
+      message: 'You must be the owner to perform this action',
+    });
+  }
+
+  try {
+    const cart = await clearCartByUserId(req.user.id);
+
+    res.status(200).json({
+      success: true,
+      message: `Success clear user cart`,
       error: null,
       data: cart,
     });
