@@ -71,7 +71,7 @@ usersRouter.post('/login', async (req, res, next) => {
   try {
     const user = await getUser({ email, password });
 
-    const cart = await getCartByUserId(id);
+    const cart = await getCartByUserId(user.id);
 
     const token = jwt.sign({ id: user.id, email }, JWT_SECRET, {
       // expiresIn: '1w',
