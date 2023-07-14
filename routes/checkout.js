@@ -20,7 +20,7 @@ router.post('/', auth, async (req, res, next) => {
         price_data: {
           currency: 'usd',
           product_data: {
-            name: product.title,
+            name: product.name,
           },
           unit_amount: Math.round(
             parseInt(product.price.replace('$', '')) * 100

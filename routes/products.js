@@ -46,13 +46,13 @@ router.post('/', auth, async (req, res, next) => {
       quantity,
     });
 
-    product.photos = [];
+    product.images = [];
 
     if (urls.length > 0) {
-      const photos = await Promise.all(
+      const images = await Promise.all(
         urls.map(url => createImage(product.id, url))
       );
-      product.photos = photos;
+      product.images = images;
     }
 
     res.status(200).json({
@@ -88,7 +88,7 @@ router.patch('/:productId', auth, async (req, res, next) => {
       quantity,
     });
 
-    product.photos = await updateImagesByProductID(productId, urls);
+    product.images = await updateImagesByProductID(productId, urls);
 
     res.status(200).json({
       success: true,
