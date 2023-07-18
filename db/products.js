@@ -53,6 +53,28 @@ async function getProducts() {
   }
 }
 
+async function getProductById(productId) {
+  try {
+    const { rows } = await client.query(
+      `
+        SELECT * 
+        FROM products
+        WHERE id=$1;
+      `,
+      [productId]
+    );
+
+    const product = rows[0];
+
+    product.images = await getImagesByProductId(productId);
+    product.reviews = await getReviewsByProductId(productId);
+
+    return product;
+  } catch (error) {
+    console.error(error);
+  }
+}
+
 async function updateProduct({ productId, ...fields }) {
   const setString = Object.keys(fields)
     .map((key, index) => `"${key}"=$${index + 2}`)
@@ -96,6 +118,7 @@ async function deleteProduct(productId) {
 module.exports = {
   createProduct,
   getProducts,
+  getProductById,
   updateProduct,
   deleteProduct,
 };
